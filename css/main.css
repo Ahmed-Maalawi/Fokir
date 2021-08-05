@@ -1,10 +1,64 @@
+:root {
+    --red-color: #ff305b;
+    --bk-color-white: #FFF;
+    --bk-color-gray: #f1f1f1;
+    --text-color-light-gray: #555;
+    --text-color-dark-gray: #333;
+    --font-family: 'Roboto', sans-serif;
+}
+
 * {
     padding: 0;
     margin:0;
     box-sizing: border-box;
     font-family: var(--font-family);
 }
+/* -------------------------------------- */
+.loading-page {
+    z-index: 999999999;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    overflow: hidden;
+    position: fixed;
+}
 
+.loading-page > * {
+    width: 100%;
+    height: 100%;
+    transition: all 2s;
+    background: black;
+    position: relative;
+}
+
+.left {
+    border-right: 2px solid var(--red-color);
+}
+
+.right {
+    border-left: 2px solid var(--red-color);
+}
+
+.left.active {
+    transform: translateX(-100%);
+    transition: all 2s;
+}
+
+.right.active {
+    transform: translateX(100%);
+    transition: all 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        background: #000;
+    }
+    to {
+        background: transparent;
+    }
+}
+/* ----------------------------------- */
 .top-nav .menu-btn {display: none}
 
 .ds-center {
@@ -17,14 +71,7 @@
 
 body {overflow-x: hidden;}
 
-:root {
-    --red-color: #ff305b;
-    --bk-color-white: #FFF;
-    --bk-color-gray: #f1f1f1;
-    --text-color-light-gray: #555;
-    --text-color-dark-gray: #333;
-    --font-family: 'Roboto', sans-serif;
-}
+
 
 html {
     scroll-behavior: smooth;
@@ -68,19 +115,7 @@ nav {
     padding: 1.25rem 0;
 }
 
-nav.mov-nav {
-    background-color: var(--text-color-dark-gray);
-    /* transform: translateY(-100%);
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);x
-    transition: transform 3s;
-    -webkit-transition: transform 3s;
-    -moz-transition: transform 3s;
-    -ms-transition: transform 3s;
-    -o-transition: transform 3s;*/
-}
+nav.mov-nav {background-color: var(--text-color-dark-gray)}
 
 nav .container {
     display: flex;

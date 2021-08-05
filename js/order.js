@@ -106,3 +106,17 @@ function addActiveClass(id){
     document.querySelector(target).parentElement.classList.add('active');
 
 }
+
+// ----------- loading animation ----------------
+const door = document.querySelectorAll('.loading-page *'),
+    loadPage = document.querySelector('.loading-page');
+
+window.addEventListener('load', () => {
+
+    door.forEach(item => {
+        item.classList.add('active');
+    });
+
+    loadPage.style.animation = 'fadeIn 2s linear';
+    setTimeout(() => {loadPage.style.display = 'none';},2000)
+});
