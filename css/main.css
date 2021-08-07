@@ -15,50 +15,107 @@
 }
 /* -------------------------------------- */
 .loading-page {
-    z-index: 999999999;
     width: 100%;
-    height: 100%;
-    background: transparent;
+    height: 100vh;
     display: flex;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    color: #111;
+    background-color: #000;
+    z-index: 100;
     position: fixed;
 }
 
-.loading-page > * {
-    width: 100%;
-    height: 100%;
-    transition: all 2s;
-    background: black;
-    position: relative;
+.loading-page.hidden {
+    animation: fade-out 1s forwards;
 }
 
-.left {
-    border-right: 2px solid var(--red-color);
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.right {
-    border-left: 2px solid var(--red-color);
+.loader span {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 20px;
+    background: #111;
+    height: calc(20px * var(--i));
+    margin: 0 10px;
+    transform: translateY(-20px);
+    animation: load 2s linear infinite;
+    animation-delay: calc(.25s * var(--i));
+
 }
 
-.left.active {
-    transform: translateX(-100%);
-    transition: all 2s;
+.loader span i {
+    color: #111;
+    transform: translateY(70px);
+    font-style: normal;
+    font-size: 50px;
+    font-weight: bold;
+    display: block;
+    animation: load2 2s linear infinite;
+    animation-delay: calc(.25s * var(--i));
+
+
 }
 
-.right.active {
-    transform: translateX(100%);
-    transition: all 2s;
-}
+@keyframes load {
 
-@keyframes fadeIn {
-    from {
-        background: #000;
+    0%,100% {
+        background: #fff;
+        filter: blur(1px);
+        box-shadow: 0 0 10px var(--red-color),
+        0 0 20px var(--red-color),
+        0 0 40px var(--red-color),
+        0 0 80px var(--red-color),
+        0 0 120px var(--red-color),
+        0 0 200px var(--red-color),
+        0 0 300px var(--red-color);
+
     }
-    to {
-        background: transparent;
+
+    25%,75%{
+        background: #111;
+        filter: blur(0px);
+        box-shadow: none;
+    }
+
+}
+
+@keyframes load2 {
+
+    0%,100% {
+        color: #fff;
+        filter: blur(1px);
+        text-shadow: 0 0 10px var(--red-color),
+        0 0 20px var(--red-color),
+        0 0 40px var(--red-color),
+        0 0 80px var(--red-color),
+        0 0 120px var(--red-color),
+        0 0 200px var(--red-color),
+        0 0 300px var(--red-color);
+
+    }
+
+    25%,75%{
+        color: #111;
+        filter: blur(0px);
+        text-shadow: none;
+    }
+
+}
+
+@keyframes fade-out {
+    100% {
+        opacity: 0;
+        visibility: hidden;
     }
 }
-/* ----------------------------------- */
+
 .top-nav .menu-btn {display: none}
 
 .ds-center {
