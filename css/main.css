@@ -13,7 +13,9 @@
     box-sizing: border-box;
     font-family: var(--font-family);
 }
+
 /* -------------------------------------- */
+
 .loading-page {
     width: 100%;
     height: 100vh;
@@ -26,8 +28,9 @@
     position: fixed;
 }
 
-.loading-page.hidden {
+.loading-page.hidden { 
     animation: fade-out 1s forwards;
+    -webkit-animation: fade-out 1s forwards; 
 }
 
 .loader {
@@ -46,8 +49,7 @@
     margin: 0 10px;
     transform: translateY(-20px);
     animation: load 2s linear infinite;
-    animation-delay: calc(.25s * var(--i));
-
+    animation-delay: calc(.1s * var(--i));
 }
 
 .loader span i {
@@ -58,9 +60,7 @@
     font-weight: bold;
     display: block;
     animation: load2 2s linear infinite;
-    animation-delay: calc(.25s * var(--i));
-
-
+    animation-delay: calc(.1s * var(--i));
 }
 
 @keyframes load {
@@ -128,8 +128,6 @@
 
 body {overflow-x: hidden;}
 
-
-
 html {
     scroll-behavior: smooth;
     font-family: var(--font-family);
@@ -156,7 +154,10 @@ a {
     text-decoration: none;
     color: #000;
 }
-
+section.animation {
+    animation: fade-in .5s linear forwards;
+    -webkit-animation: fade-in .5s linear forwards;
+}
 section:nth-of-type(even) {background: var(--bk-color-gray)}
 
 section:nth-of-type(odd) {background: var(--bk-color-white)}
@@ -239,11 +240,8 @@ header h1 {
 header p {
     font-size: 1.5rem;
     font-weight: 300;
-    /* old */
     padding: 0 1rem;
     position: relative;
-    /* padding: 0; */
-    /* background-color: violet; */
 }
 
 header p::after {
@@ -405,6 +403,32 @@ section .sec-title h2::after {
     padding: .7rem;
 }
 
+#portfolio ul li button {
+    color: var(--bk-color-white);
+    font-size: 1.1rem;
+    padding: .5rem;
+    border: none;
+    background: none;
+    color: var(--text-color-dark-gray);
+    text-transform: capitalize;
+}
+#portfolio ul li button:hover {
+    color: var(--red-color);
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+}
+#portfolio ul li button.active-btn {
+    background-color: var(--red-color);
+    color: var(--bk-color-white);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
 #about-me .border .layout ul a:hover {color: var(--red-color)}
 
 #about-me .hafe.content {
@@ -543,20 +567,23 @@ section .sec-title h2::after {
     text-transform: uppercase;
 }
 
-#portfolio ul li:hover a {color: var(--red-color)}
+#portfolio ul button:hover a {color: var(--red-color)}
 
 #portfolio .image-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 1.5rem 0;
+    justify-content: flex-start;
 }
 
 #portfolio .image-container .image {
     width: 30%;
-    margin: 1rem 0;
+    margin: 1rem .5rem;
     position: relative;
     overflow: hidden;
+    animation: fade-in .5s linear forwards;
+    -webkit-animation: fade-in .5s linear forwards;
 }
 
 #portfolio .image-container .image img {
@@ -574,6 +601,10 @@ section .sec-title h2::after {
     background: rgba(0, 0, 0, .4);
     opacity: 0;
     transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
 }
 
 #portfolio .image-container .image:hover .layer {
@@ -1450,4 +1481,70 @@ footer p a:hover {text-decoration: underline}
     }
 
     #blog .box-cont {flex-wrap: nowrap}
+}
+
+.image-layer {
+    width: 100%;
+    height: 100vh;
+    background-color: #0000009b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    font-size: 30px;
+    position: fixed;
+    inset: 0;
+    z-index: 99999999999;
+    animation: fade-in .5s linear forwards;
+    -webkit-animation: fade-in .5s linear forwards;
+}
+
+#exit-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    /* color: #fff; */
+}
+
+.image-layer i {
+    cursor: pointer;
+    transition: all ease-in;
+    -webkit-transition: all ease-in;
+    -moz-transition: all ease-in;
+    -ms-transition: all ease-in;
+    -o-transition: all ease-in;
+}
+button {cursor: pointer;}
+.image-layer i:hover {color: var(--red-color)}
+
+.image-layer .display-box {
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.image-layer.hidden {
+    animation: fade-out .5s forwards linear;
+    -webkit-animation: fade-out .5s forwards linear;
+}
+
+
+button .active-btn {
+    background-color: var(--red-color);
+    color: #fff;
+}
+.d-none {display: none;}
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
+    
 }
